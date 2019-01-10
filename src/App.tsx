@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedIndexPage } from './pages/IndexPage';
+import { ConnectedAboutPage } from './pages/AboutPage';
+import FourOhFourPage from './pages/FourOhFourPage';
+import Nav from './components/Nav';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div className="container">
+          <Nav />
+
+          <Switch>
+            <Route exact path="/" component={ConnectedIndexPage} />
+            <Route exact path="/about" component={ConnectedAboutPage} />
+            <Route component={FourOhFourPage} />
+          </Switch>
+        </div>
     );
   }
 }
